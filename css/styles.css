@@ -192,7 +192,7 @@ p {
     padding: 120px 0;
 }
 
-.visually-hiden {
+.visually-hidden {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -485,24 +485,26 @@ background-color: #31d0aa;
 
 .footer-subscribe-form {
     display: flex;
+    gap: 24px;
 }
 
 .footer-subscribe-form-input {
-    margin-right: 24px;
     padding: 8px 16px;
     width: 264px;
     height: 40px;
+    font-size: 12px;
+    line-height: 1.5;
+    letter-spacing: 0.04em;
+    color: #ffffff;
     border-radius: 4px;
     border: 1px solid var(--WHITE, #FFF);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
     background-color: transparent;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
 }
 
 .footer-subscribe-form-input::placeholder {
-    color: #FFF;
-    font-size: 12px;
-    line-height: 2;
-    letter-spacing: 0.04em;
+    color: #ffffff;
 }
 
 .footer-subscribe-btn {
@@ -512,17 +514,21 @@ background-color: #31d0aa;
     align-items: center;
     color: var(--WHITE, #FFF);
     text-align: center;
-    font-family: Roboto;
+    font-family: "Roboto", sans-serif;
     font-size: 16px;
     font-weight: 500;
     line-height: 1.5;
     letter-spacing: 0.04em;
-    width: 165px;
+    min-width: 165px;
     height: 40px;
-    gap: 16px;
     border: none;
     border-radius: 4px;
     background: #4D5AE5;
+    cursor: pointer;
+}
+
+.footer-subscribe-form-icon {
+    margin-left: 16px;
 }
 
 
@@ -535,12 +541,13 @@ background-color: #31d0aa;
     width: 100%;
     height: 100%;
     background-color: var(--NAVY-BLUE-modal, rgba(46, 47, 66, 0.40));
-    
+/*    
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
     
-    transition: opacity 500ms linear, visibility 500ms linear;
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+        visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
     
 .backdrop.is-open {
@@ -548,33 +555,41 @@ background-color: #31d0aa;
     visibility: visible;
     pointer-events: auto;
 }
-
+*/
 
 /* ======= MODAL WINDOW ======= */
 .modal {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 24px;
+    transform: translate(-50%, -50%) scale(1);
+    padding: 72px 24px 24px 24px;
     width: 408px;
     min-height: 584px;
     border-radius: 4px;
     background-color: #FCFCFC;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .close-btn {
     position: absolute;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     top: 24px;
     right: 24px;
     line-height: 0;
     background-color: #E7E9FC;
-    border: rgba(0, 0, 0, 0.10);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     border-width: 1px;
     border-radius: 50%;
     padding: 8px;
     fill: rgba(46, 47, 66, 1);
-    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
 }
 
 .close-btn:hover,
@@ -588,12 +603,15 @@ background-color: #31d0aa;
 /* ======= MODAL FORM ======= */
 
 .review-form-description {
-    margin-top: 48px;
     margin-bottom: 16px;
     text-align: center;
     font-weight: 500;
     color: #2E2F42;
     width: 100%;
+}
+
+.review-form-field-wrapper {
+    margin-bottom: 8px;
 }
 
 .review-form-field-label {
@@ -612,16 +630,18 @@ background-color: #31d0aa;
 
 .review-form-field-input {
     width: 100%;
-    height: 58px;
+    height: 40px;
     border-radius: 4px;
     border: 1px solid var(--NAVY-BLUE-modal, rgba(46, 47, 66, 0.40));
     padding-left: 38px;
+    background-color: transparent;
+    outline: transparent;
     transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .review-form-field-input:focus {
     border-color: #4D5AE5;
-    outline: transparent;
+
 }
 
 .review-form-field-icon {
@@ -637,6 +657,10 @@ background-color: #31d0aa;
     fill: #4D5AE5;
 }
 
+.review-form-field-wrapper-comment {
+    margin-bottom: 16px;
+}
+
 .review-form-field-comment {
     padding-top: 8px;
     padding-bottom: 8px;
@@ -647,19 +671,21 @@ background-color: #31d0aa;
     letter-spacing: 0.04em;
     width: 100%;
     height: 120px;
+    color: rgba(46, 47, 66, 0.4);
     border-radius: 4px;
     border: 1px solid var(--NAVY-BLUE-modal, rgba(46, 47, 66, 0.40));
     resize: none;
+    background-color: transparent;
+    outline: transparent;
     transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .review-form-field-comment::placeholder {
-        color: var(--NAVY-BLUE-modal, rgba(46, 47, 66, 0.40));
+    color: rgba(46, 47, 66, 0.4);
 }
 
 .review-form-field-comment:focus {
     border-color: #4D5AE5;
-    outline: transparent;
 }
 
 .review-form-checkbox-wrapper {
@@ -677,15 +703,20 @@ background-color: #31d0aa;
     cursor: pointer;
     fill: transparent;
     margin-right: 8px;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+        border 250ms cubic-bezier(0.4, 0, 0.2, 1),
+        fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .review-form-checkbox:focus + .review-form-checkbox-label > .review-form-own-checkbox {
     background-color: #404BBF;
-    fill: #ffffff;
+    fill: #F4F4FD;;
 }
 
 .review-form-checkbox:checked+.review-form-checkbox-label>.review-form-own-checkbox {
     outline: 1px solid rgba(46, 47, 66, 0.40);
+    border: none;
+    fill: #F4F4FD;
 }
 
 .review-form-checkbox-label{
@@ -702,21 +733,24 @@ background-color: #31d0aa;
 .review-form-submit {
     margin-left: 95px;
     padding: 16px 32px;
+    display: block;
     min-width: 169px;
     height: 56px;
     color:#FFF;
-    font-family: Roboto;
+    font-family: "Roboto", sans-serif;
     font-weight: 500;
+    line-height: 1.5;
     letter-spacing: 0.04em;
     border: none;
     border-radius: 4px;
-    background: #4D5AE5;
-    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: #4D5AE5;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer
 }
 
 .review-form-submit:hover,
 .review-form-submit:focus {
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
+    background-color: #404BBF;
 }
 
 
