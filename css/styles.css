@@ -720,14 +720,10 @@ background-color: #31d0aa;
 
 .review-form-checkbox:focus + .review-form-checkbox-label > .review-form-own-checkbox {
     background-color: #404BBF;
+    border: none;
     fill: #F4F4FD;;
 }
 
-.review-form-checkbox:checked+.review-form-checkbox-label>.review-form-own-checkbox {
-    outline: 1px solid rgba(46, 47, 66, 0.40);
-    border: none;
-    fill: #F4F4FD;
-}
 
 .review-form-checkbox-label{
     color: #8E8F99;
